@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>css3-transition-animation属性的使用</title>
+    <meta name="description" content="css3-transition-animation属性的使用" />
+    <meta name="keywords" content="css3,transition" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script type="text/javascript">
+      // css3-transition-animation属性的使用
+      function translateall() {
+        var x = document.getElementById("translatex").value;
+        var y = document.getElementById("translatey").value;
+        var z = document.getElementById("translatez").value;
+
+        document.getElementById("block").style.webkitTransform =
+          "translateX(" +
+          x +
+          "px) translateY(" +
+          y +
+          "px) translateZ(" +
+          z +
+          "px)";
+
+        document.getElementById("translatex-span").innerText = x;
+        document.getElementById("translatey-span").innerText = y;
+        document.getElementById("translatez-span").innerText = z;
+      }
+      // 实现图片翻页效果
+      var curIndex = 1;
+
+      function next() {
+        if (curIndex == 6) {
+          return;
+        }
+        var curPage = document.getElementById("page" + curIndex);
+        curPage.style.webkitTransform = "rotateX(-90deg)";
+
+        curIndex++;
+        var nextPage = document.getElementById("page" + curIndex);
+        nextPage.style.webkitTransform = "rotateX(0deg)";
+      }
+      function prev() {
+        if (curIndex == 1) {
+          return;
+        }
+        var curPage = document.getElementById("page" + curIndex);
+        curPage.style.webkitTransform = "rotateX(90deg)";
+
+        curIndex--;
+        var nextPage = document.getElementById("page" + curIndex);
+        nextPage.style.webkitTransform = "rotateX(0deg)";
+      }
+    </script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <!-- css3-transition-animation属性的使用 -->
+    <div id="experiment">
+      <div id="block"></div>
+    </div>
+    <div id="op">
+      <p>translate x: <span id="translatex-span">0</span> px</p>
+      <input
+        type="range"
+        min="-360"
+        max="360"
+        id="translatex"
+        value="0"
+        class="range-control"
+        onchange="translateall()"
+      /><br />
+      <p>translate y: <span id="translatey-span">0</span> px</p>
+      <input
+        type="range"
+        min="-360"
+        max="360"
+        id="translatey"
+        value="0"
+        class="range-control"
+        onchange="translateall()"
+      /><br />
+      <p>translate z: <span id="translatez-span">0</span> px</p>
+      <input
+        type="range"
+        min="-360"
+        max="360"
+        id="translatez"
+        value="0"
+        class="range-control"
+        onchange="translateall()"
+      /><br />
+    </div>
+    <!-- 实现图片翻页效果 -->
+    <div id="my3dspace">
+      <div id="pagegroup">
+        <div class="page" id="page1">1</div>
+        <div class="page" id="page2">2</div>
+        <div class="page" id="page3">3</div>
+        <div class="page" id="page4">4</div>
+        <div class="page" id="page5">5</div>
+        <div class="page" id="page6">6</div>
+      </div>
+    </div>
+    <div id="opp">
+      <a href="javascript:next()">next</a>&nbsp;&nbsp;&nbsp;<a
+        href="javascript:prev()"
+        >previous</a
+      >
+    </div>
+  </body>
+</html>
